@@ -1,24 +1,33 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_owned_by_current_user, only: [:edit, :update, :destroy]
+
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.order("created_at DESC")
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+
   end
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   # GET /posts/1/edit
   def edit
+    @post.edit
+    respond_to do |format|
+      format.html { redirect_to @post, notice: 'Post was successfully edited.' }
+      format.json { render :show, status: :ok, location: @post }
+    end
   end
 
   # POST /posts
@@ -28,7 +37,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to user_posts_path(current_user), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -69,6 +78,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:comment)
+      params.require(:post).permit(:title, :body)
     end
 end

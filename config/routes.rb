@@ -1,22 +1,27 @@
 Rails.application.routes.draw do
+
+
   # get 'sessions/new'
 
   # get 'sessions/create'
 
   # get 'sessions/destroy'
 
-  # resources :posts
-  # resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'posts#index'
-  get 'home', to: 'users#index'
+  # get '/', to: 'home#index', as: :home
+  root 'posts#index', as: :home
+  get '/user', to: 'users#show'
+  get '/user/posts', to: 'posts#index'
+  get '/user/post', to: 'posts#show'
+  get '/users/:user_id/posts/:id', to: 'posts#show', as: :show_user_post
 
-  resources :users do
+
+  resources :users, only: [:new, :create] do
       resources :posts
   end
 
-  get 'login', to: 'sessions#new'
-  delete 'logout', to: 'sessions#destroy', as: :sign_out
+  get 'sign_in', to: 'sessions#new', as: :sign_in
+  delete 'sign_out', to: 'sessions#destroy', as: :sign_out
   resources :sessions, only: [:create]
 
 end

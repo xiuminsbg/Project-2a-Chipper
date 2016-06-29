@@ -1,8 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<%= render 'form', post: @post %>
 <p>
   <strong>Comment:</strong>
-  <%= @post.comment %>
+  <% if user_logged_in? %>
+    <% @post.each do |p| %>
+      <%= p.title %>
+      <%= p.body %>
+    <% end %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |

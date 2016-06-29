@@ -7,6 +7,7 @@ RSpec.describe 'Signing up' do
   end
 
   it 'lets the user sign up' do
+    fill_in 'Name', with: 'hermione'
     fill_in 'Email', with: 'hermione@hogwarts.edu'
     fill_in 'Password', with: 'super_secret'
     fill_in 'Password confirmation', with: 'super_secret'

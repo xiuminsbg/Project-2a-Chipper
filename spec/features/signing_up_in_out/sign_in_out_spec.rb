@@ -6,7 +6,7 @@ RSpec.describe 'Signing in' do
 
   context 'when a user is signed in' do
     before do
-      ensure_on home_path
+      ensure_on user_posts_path
       click_on 'Sign In'
 
       fill_in 'Email', with: 'harry@hogwarts.edu'
@@ -17,7 +17,7 @@ RSpec.describe 'Signing in' do
     include_examples 'a signed in user'
 
     it 'shows them the home page' do
-      expect(page.current_path).to eq(root_path)
+      expect(page.current_path).to eq(user_posts_path)
     end
 
     it 'lets the user sign out' do
@@ -25,7 +25,7 @@ RSpec.describe 'Signing in' do
 
       expect(page).to have_content('Signed out')
       expect(page).to_not have_content('harry@hogwarts.edu')
-      expect(page.current_path).to eq(root_path)
+      expect(page.current_path).to eq(home_path)
     end
   end
 
