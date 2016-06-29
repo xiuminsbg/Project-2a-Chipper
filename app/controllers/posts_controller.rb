@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
+    @post.user = current_user  
     respond_to do |format|
       if @post.save
         format.html { redirect_to user_posts_path(current_user), notice: 'Post was successfully created.' }
