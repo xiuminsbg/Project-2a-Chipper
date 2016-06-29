@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # get '/', to: 'home#index', as: :home
-  root 'posts#index', as: :home
+  root 'home#index', as: :homeIndex
   get '/user', to: 'users#show'
-  
+  get '/users/:user_id/posts', to: 'posts#index', as: :home
 
 
   resources :users, only: [:new, :create] do

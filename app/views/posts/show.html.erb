@@ -1,15 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<%= render 'form', post: @post %>
-<p>
-  <strong>Comment:</strong>
-  <% if user_logged_in? %>
-    <% @post.each do |p| %>
-      <%= p.title %>
-      <%= p.body %>
-    <% end %>
-  <% end %>
-</p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<% @posts.each do |f| %>
+  <div class="cell">
+    <h4><%= f.title %></h4>
+    <p><%= f.body %></p>
+  </div>
+<% end %>
+<%= link_to 'Back', user_posts_path(current_user) %>

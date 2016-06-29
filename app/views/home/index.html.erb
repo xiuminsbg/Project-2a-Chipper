@@ -1,6 +1,10 @@
-<h1>Home</h1>
-<p>What everyone is saying:</p>
-<% @posts.each do |f| %>
-  <%= f.title %>
-  <%= f.body %>
-<% end %>
+<section>
+  <h1>Home</h1>
+  <h3>What everyone is saying:</h3>
+  <% @posts.each do |f| %>
+    <div class="cell">
+      <h4><%= f.title %></h4>
+      <p><%= f.body %></p>
+    </div>
+  <% end %>
+</section>  
