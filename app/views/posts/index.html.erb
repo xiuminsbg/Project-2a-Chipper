@@ -1,36 +1,22 @@
-<p id="notice"><%= notice %></p>
+<section>
+  <p id="notice"><%= notice %></p>
 
-    <% if user_logged_in? %>
-      <h3>Hello, <%=current_user.email %> </h3>
+
+  <h1>Your Posts</h1>
+
+  <% if user_logged_in? %>
+    <% @posts.each do |post| %>
+      <div class="onePostSet">
+        <div id="postSet">
+          <h5><%= post.title %></h5>
+          <p><%= post.body %></p>
+        </div>
+        <ul class="showEditDestroy">
+          <li class="change"><%= link_to 'Show', user_post_path(post.user_id, post) %></li>
+          <li class="change"><%= link_to 'Edit', edit_user_post_path(post.user_id, post) %></li>
+          <li class="change"><%= link_to 'Destroy', user_post_path(post.user_id, post), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        </ul>
+      </div>
     <% end %>
-<h1>Your Posts</h1>
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-<% if user_logged_in? %>
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td><%= post.title %></td>
-          <td><%= post.body %></td>
-          <td><%= link_to 'Show', user_post_path(post.user_id, post) %></td>
-          <td><%= link_to 'Edit', edit_user_post_path(post.user_id, post) %></td>
-          <td><%= link_to 'Destroy', user_post_path(post.user_id, post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'New Post', new_user_post_path(current_user) %>
-  <%= link_to 'Sign Out', sign_out_path, method: :delete %>
-<% end %>
+  <% end %>
+</section>

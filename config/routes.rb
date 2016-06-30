@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/users/:user_id/posts', to: 'posts#index', as: :home
 
 
-  resources :users, only: [:new, :create] do
+  resources :users, only: [:new, :create, :index] do
       resources :posts
   end
 

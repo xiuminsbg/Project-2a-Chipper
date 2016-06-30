@@ -15,3 +15,103 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+@import 'https://fonts.googleapis.com/css?family=Gentium+Basic:700|Open+Sans:300';
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+ section {
+   max-width: 900px;
+   margin: 5em auto;
+   text-align: center;
+   font-family: 'Open Sans', sans-serif;
+ }
+ h1 {
+   margin: 2em;
+   color: rgb(191, 24, 44);
+   font-family: 'Gentium Basic', serif;
+ }
+ #greeting {
+   margin: 4em auto 0 auto;
+   text-align: center;
+   font-style: italic;
+   color: rgb(191, 24, 44);
+ }
+ .container {
+   max-width: 950px;
+ }
+ .cell {
+   width: 100%;
+   height: auto;
+   margin: 1.5em 0;
+   padding: 2em;
+   background: rgb(200, 195, 198);
+ }
+ li {
+   list-style: none;
+   float: right;
+   margin: 1.2em;
+ }
+  a, a:visited, a:hover, .navbar-inverse .navbar-brand {
+    color: rgb(251, 252, 252);
+    font-family: 'Gentium Basic', serif;
+    font-size: 1.5em;
+    text-decoration: none;
+    background: none;
+  }
+  a:hover {
+    color: rgb(7, 43, 71);
+  }
+  #bs-example-navbar-collapse-1 {
+    background: rgb(191, 24, 44);
+  }
+  .navbar, .navbar-inverse, .navbar-fixed-top {
+    background: rgb(191, 24, 44);
+    border: none;
+  }
+  .change > a {
+    float: left;
+    display: inline-block;
+    color: rgb(7, 43, 71);
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+  }
+  .back > a {
+    color: rgb(7, 43, 71);
+    font-size: 1.5em;
+    margin: 2em 1em;
+    text-align: center;
+  }
+  .onePostSet {
+    width: 100%;
+    min-height: 8em;
+    background: rgba(191, 24, 44, 0.2);
+    padding: 0.5em;
+    margin-top: 1em;
+    text-align: left;
+  }
+  #postSet {
+    float: left;
+    width: 70%;
+    height: auto;
+    display: inline;
+  }
+  #postSetShow {
+    margin: 1em;
+  }
+  .showEditDestroy {
+    float: right;
+    margin: 2.5em 0 0 0;
+    padding: 0;
+    display: inline;
+    width: 25%;
+    height: auto;
+  }
+  h5 {
+    font-family: 'Gentium Basic', serif;
+    text-align: left;
+    font-size: 1.5em;
+  }
+  

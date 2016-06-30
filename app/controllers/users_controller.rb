@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    # @user = User.find(params[:id])
+    @user = User.find(current_user)
   end
 
   # GET /users/new
@@ -30,7 +30,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        # session[:user_id]= @user.id
         format.html { redirect_to sign_in_path, notice: 'Welcome! User successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

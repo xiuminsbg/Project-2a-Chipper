@@ -2,9 +2,11 @@
 
 
 <% @posts.each do |f| %>
-  <div class="cell">
-    <h4><%= f.title %></h4>
-    <p><%= f.body %></p>
+  <div class="onePostSet">
+    <div id="postSetShow">
+      <h5><%= f.title %></h5>
+      <p><%= f.body %></p>
+    </div>
   </div>
 <% end %>
-<%= link_to 'Back', user_posts_path(current_user) %>
+<div class="back"><%= link_to 'Back', user_posts_path %></div>

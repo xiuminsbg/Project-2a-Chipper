@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_owned_by_current_user, only: [:edit, :update, :destroy]
+  # before_action :ensure_owned_by_current_user, only: [:edit, :update, :destroy]
 
 
   # GET /posts
@@ -24,11 +24,6 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post.edit
-    respond_to do |format|
-      format.html { redirect_to @post, notice: 'Post was successfully edited.' }
-      format.json { render :show, status: :ok, location: @post }
-    end
   end
 
   # POST /posts
@@ -38,7 +33,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     respond_to do |format|
       if @post.save
-        format.html { redirect_to user_posts_path(current_user), notice: 'Post was successfully created.' }
+        format.html { redirect_to user_post_path(current_user, @post), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -52,7 +47,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to user_post_path(current_user, @post), notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -66,7 +61,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to user_posts_path, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
